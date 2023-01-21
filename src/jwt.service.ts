@@ -31,8 +31,8 @@ export class JwtService {
      * @param {string} authId
      * @returns {string}
      */
-    generateToken(authId: string): string {
-        return sign({ authId }, this.privateKey, {
+    generateToken(data: any): string {
+        return sign({ data }, this.privateKey, {
             expiresIn: 60 * 2,
             issuer: this.opts.issuer,
             algorithm: 'RS256',
@@ -46,10 +46,10 @@ export class JwtService {
      * @param {string} token
      * @returns {Jwt}
      */
-    verifyToken(token: string,): Jwt {
+    verifyToken(token: string): Jwt {
         const jwt = verify(token, this.publicKey, {
             complete: true,
-            issuer: this.opts.issuer,
+            issuer: this.opts.issuer
         });
         return jwt;
     }

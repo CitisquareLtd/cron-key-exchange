@@ -29,8 +29,8 @@ describe('Test Jwt Service', () => {
     
     const token = jwtService.generateToken(authId);
     console.log(jwtService.verifyToken(token));
-    // const decoded =
-    expect(jwtService.verifyToken(token).payload).toHaveProperty('authId', authId)
+    
+    expect(jwtService.verifyToken(token).payload).toHaveProperty('data', authId)
     expect(jwtService.verifyToken(token).payload).toHaveProperty('iss', issuer)
     expect(jwtService.verifyToken(token).payload).toHaveProperty('exp')
     expect(jwtService.verifyToken(token).payload).toHaveProperty('iat')

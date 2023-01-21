@@ -32,8 +32,10 @@ export class JwtValidator {
    */
   verify(req: Request, res: Response, next: NextFunction): void {
     const token = this.getToken(req);
+    const decoded = this.service.verifyToken(token)
 
-    if (token && this.service.verifyToken(token)) {
+    if (token && decoded) {
+      (req as any).user = decoded.payload;
       return next();
     }
     res.status(401).json({
