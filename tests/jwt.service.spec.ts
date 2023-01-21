@@ -11,7 +11,7 @@ beforeAll(async () => {
     exponent: 65537
   });
 
-  console.log(pair);
+  // console.log(pair);
   jwtService = new JwtService(pair.private, pair.public)
 });
 

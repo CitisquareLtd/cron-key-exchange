@@ -19,7 +19,7 @@ jobs:
           registry-url: 'https://npm.pkg.github.com'
           scope: '@citisquareltd'
       - run: npm install
-      - run: npm test
+      - run: npm prepublishOnly
       - run: npx changelogithub
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -1,2 +1,2 @@
-export * from './jwt.validator'
-export * from './jwt.service'
+export * from './jwt.validator';
+export * from './jwt.service';
