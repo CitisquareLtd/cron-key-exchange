@@ -1,2 +1,5 @@
 src
 node_modules
+.github
+tests
+jest.config.js
