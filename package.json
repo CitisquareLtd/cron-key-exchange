@@ -1,0 +1,24 @@
+{
+  "name": "@citisquareltd/cron-key-exchange",
+  "version": "0.0.1",
+  "description": "A key exchange package for cron jobs",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CitisquareLtd/cron-key-exchange.git"
+  },
+  "keywords": [
+    "jwt",
+    "wuthentication",
+    "cronjob"
+  ],
+  "author": "wisdom ekeh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CitisquareLtd/cron-key-exchange/issues"
+  },
+  "homepage": "https://github.com/CitisquareLtd/cron-key-exchange#readme"
+}
