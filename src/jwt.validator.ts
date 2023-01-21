@@ -2,7 +2,12 @@ import { NextFunction, Request, Response } from 'express';
 import { JwtService } from './jwt.service';
 
 export class JwtValidator {
-  private readonly service = new JwtService();
+
+  private readonly service: JwtService
+
+  constructor(opts?: { issuer?: string, publicKey?: string }) {
+    this.service = new JwtService(opts);
+  }
 
 
   /**
