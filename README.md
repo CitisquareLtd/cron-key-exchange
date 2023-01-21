@@ -10,7 +10,7 @@ create a .npmrc file wuth the following content
 
 ```
 ; Set a new registry for a scoped package
-//npm.pkg.github.com/:_authToken=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
+//npm.pkg.github.com/:_authToken=github-personal-access-token
 @citisquareltd:registry=https://npm.pkg.github.com
 always-auth=true
 ```
@@ -29,5 +29,11 @@ the private key is only needed when generating auth token, the public key is use
 To validate token, use the `JwtValidator` class and call the `verify` method, this method is specific for express based application, for other frameworks, just use the `JwtService` class and call `verifyToken`
 
 ```typescript
-new JwtValidator()
+new JwtValidator().verifyToken(token)
+```
+
+To generate token, call `generateToken` on the `JwtService`
+
+```typescript
+new JwtService().generateToken()
 ```
