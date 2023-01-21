@@ -35,8 +35,16 @@ export class JwtValidator {
    * @param {NextFunction} next
    * @returns {void}
    */
-  verify = (req: Request, res: Response, next: NextFunction): void  => {
+  verify = (req: Request, res: Response, next: NextFunction): void => {
     const token = this.getToken(req);
+
+    if (!token) {
+      res.status(401).json({
+        status: 'error',
+        message: 'Unauthorized access - invalid token provided',
+      });
+      return
+    }
     const decoded = this.service.verifyToken(token)
 
     if (token && decoded) {
