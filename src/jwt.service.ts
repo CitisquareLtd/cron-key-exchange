@@ -1,18 +1,22 @@
-import { sign, verify } from 'jsonwebtoken';
-
+import { Jwt, sign, verify } from 'jsonwebtoken';
+export interface JwtOpts {
+    privateKey?: string
+    publicKey?: string
+    issuer?: string
+}
 export class JwtService {
   private readonly privateKey = process.env.CRON_PRIVATE_KEY || '';
   private readonly publicKey = process.env.CRON_PUBLIC_KEY || '';
 
-  private readonly issuer = 'citisquare/cronjobs';
+ 
 
-  constructor(privateKey?: string, publicKey?: string) {
-    if (privateKey) {
-      this.privateKey = privateKey;
+  constructor( private readonly opts?: JwtOpts) {
+    if (opts.privateKey) {
+      this.privateKey = opts.privateKey;
     }
 
-    if (publicKey) {
-      this.publicKey = publicKey;
+    if (opts.publicKey) {
+      this.publicKey = opts.publicKey;
     }
   }
 
@@ -25,16 +29,23 @@ export class JwtService {
   generateToken(authId: string): string {
     return sign({ authId }, this.privateKey, {
       expiresIn: 60 * 2,
-      issuer: this.issuer,
+      issuer: this.opts.issuer,
       algorithm: 'RS256',
     });
   }
 
-  verifyToken(token: string) {
+  
+  /**
+   * Verify jwt token
+   *
+   * @param {string} token
+   * @returns {Jwt}
+   */
+  verifyToken(token: string): Jwt {
     const jwt = verify(token, this.publicKey, {
       complete: true,
-      issuer: this.issuer,
+      issuer: this.opts.issuer,
     });
-    return jwt.payload;
+    return jwt;
   }
 }
