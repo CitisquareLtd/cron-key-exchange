@@ -1,17 +1,16 @@
 {
   "name": "@citisquareltd/cron-key-exchange",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A key exchange package for cron jobs",
   "main": "dist/index.js",
   "scripts": {
     "test": "jest ",
     "build": "tsc",
-    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
+    "format": "prettier --write \"src/**/*.ts\" ",
     "lint": "tslint -p tsconfig.json",
     "prepublishOnly": "npm test && npm run lint",
     "preversion": "npm run lint",
-    "release": "bumpp package.json --commit --push --tag",
-    "version": "npm run format && git add -A src"
+    "release": "bumpp package.json --commit --push --tag"
   },
   "repository": {
     "type": "git",
