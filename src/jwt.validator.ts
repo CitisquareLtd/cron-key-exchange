@@ -18,7 +18,7 @@ export class JwtValidator {
    * @param {Request} req
    * @returns {(string | null)}
    */
-  private getToken(req: Request): string | null {
+  private getToken = (req: Request): string | null => {
     const token = req.headers[this.service.headerName]?.toString();
     if (token && token.split(' ')[0] === 'Bearer') {
       return token.split(' ')[1];
@@ -35,7 +35,7 @@ export class JwtValidator {
    * @param {NextFunction} next
    * @returns {void}
    */
-  verify(req: Request, res: Response, next: NextFunction): void {
+  verify = (req: Request, res: Response, next: NextFunction): void  => {
     const token = this.getToken(req);
     const decoded = this.service.verifyToken(token)
 
