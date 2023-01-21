@@ -1,10 +1,20 @@
 {
     "compilerOptions": {
-      "target": "es5",
-      "module": "commonjs",
-      "declaration": true,
-      "outDir": "./dist",
-      "strict": true
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "target": "es6",
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "declaration": true,
+        "outDir": "lib",
+        "esModuleInterop": true,
+        "strict": true,
+        "checkJs": true,
+        "allowSyntheticDefaultImports": true,
+        "strictNullChecks": false,
+        "incremental": true,
+        "skipLibCheck": true,
+        "forceConsistentCasingInFileNames": true
     },
     "include": ["src"],
     "exclude": ["node_modules", "**/__tests__/*"]
