@@ -4,15 +4,33 @@ import { JwtService } from './jwt.service';
 export class JwtValidator {
   private readonly service = new JwtService();
 
+
+  /**
+   * Extract token from header
+   * @date 21/01/2023 - 20:02:16
+   *
+   * @private
+   * @param {Request} req
+   * @returns {(string | null)}
+   */
   private getToken(req: Request): string | null {
-    const token = req.headers['cron-token']?.toString();
+    const token = req.headers[this.service.headerName]?.toString();
     if (token && token.split(' ')[0] === 'Bearer') {
       return token.split(' ')[1];
     }
     return null;
   }
 
-  verify(req: Request, res: Response, next: NextFunction) {
+
+  /**
+   * Verify token using function as an express middleware
+   *
+   * @param {Request} req
+   * @param {Response} res
+   * @param {NextFunction} next
+   * @returns {void}
+   */
+  verify(req: Request, res: Response, next: NextFunction): void {
     const token = this.getToken(req);
 
     if (token && this.service.verifyToken(token)) {
