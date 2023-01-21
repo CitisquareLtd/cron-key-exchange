@@ -5,7 +5,7 @@ export class JwtValidator {
 
   private readonly service: JwtService
 
-  constructor(opts?: { issuer?: string, publicKey?: string }) {
+  constructor(opts?: { issuer?: string, publicKey?: string, headerName?: string }) {
     this.service = new JwtService(opts);
   }
 
