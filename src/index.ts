@@ -1,1 +1,2 @@
-export * from './jwt.middleware'
+export * from './jwt.validator'
+export * from './jwt.service'
